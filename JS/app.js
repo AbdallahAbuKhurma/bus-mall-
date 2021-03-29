@@ -94,6 +94,8 @@ function voteClick(event){
       }
     }votesNum++;
     rendur();
+  }else{
+    imageSection.removeEventListener('click',voteClick);
   }
 }
 
@@ -116,7 +118,7 @@ function displayProductList(event){
     ulEl.appendChild(liEl);
     liEl.textContent = `${product.all[i].name} had ${product.all[i].votes} votes, and was seen ${product.all[i].views} times.`;
   }
-
+ result.removeEventListener('click', displayProductList);
 }
 
 rendur();
