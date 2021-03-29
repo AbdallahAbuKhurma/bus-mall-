@@ -66,18 +66,21 @@ function rendur(){
   leftImage.src = product.all[leftIndex].path;
   leftImage.alt = product.all[leftIndex].name;
   leftImage.title = product.all[leftIndex].name;
+  product.all[leftIndex].views++;
 
   centerImage.src = product.all[centerIndex].path;
   centerImage.alt = product.all[centerIndex].name;
   centerImage.title = product.all[centerIndex].name;
+  product.all[centerIndex].views++;
 
   rightImage.src = product.all[rightIndex].path;
   rightImage.alt = product.all[rightIndex].name;
   rightImage.title = product.all[rightIndex].name;
+  product.all[rightIndex].views++;
   }
 }
 
-imageSection.addEventListener('click',voteClick ,veiwClick);
+imageSection.addEventListener('click',voteClick);
 
 function voteClick(event){
   if(votesNum < totalVotes){
@@ -93,23 +96,6 @@ function voteClick(event){
     rendur();
   }
 }
-
-
-
-function veiwClick(event){
-  if(event.target.id !== 'imageSection'){
-    if(event.target.id === leftImage.id){
-      product.all[leftIndex].views++;
-    }else if(event.target.id === centerImage.id){
-      product.all[centerIndex].views++;
-    }else{
-      product.all[rightIndex].views++;
-    }
-  }rendur();
-  
-}
-
-rendur();
 
 const result = document.getElementById('result');
 const productList = document.getElementById('productList');
