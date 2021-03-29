@@ -5,6 +5,9 @@ let centerIndex;
 let rightIndex;
 let votesNum = 0;
 let totalVotes = 25;
+let votes = [];
+let views = [];
+let firstSet = [];
 
 const leftImage = document.getElementById('leftImage');
 const centerImage = document.getElementById('centerImage');
@@ -53,14 +56,22 @@ for(let i = 0; i < images.length ; i++){
 }
 
 function rendur(){
-  leftIndex = randomNumber(0,images.length-1);
-  centerIndex = randomNumber(0,images.length-1);
-  rightIndex = randomNumber(0,images.length-1);
+ 
+  firstSet[0] = leftIndex;
+  firstSet[1] = centerIndex;
+  firstSet[2] = rightIndex;
+
+  while( leftIndex === centerIndex|| centerIndex === rightIndex|| leftIndex === rightIndex || firstSet.includes(leftIndex)  || firstSet.includes(centerIndex) || firstSet.includes(rightIndex)){
+      leftIndex = randomNumber(0,images.length-1);
+      centerIndex = randomNumber(0,images.length-1);
+      rightIndex = randomNumber(0,images.length-1);
+    
+    }
+
 
   if (leftIndex === centerIndex || leftIndex === rightIndex || centerIndex === rightIndex) {
     rendur();
   }
-
   else 
   {
   leftImage.src = product.all[leftIndex].path;
@@ -117,8 +128,36 @@ function displayProductList(event){
     const liEl = document.createElement('li');
     ulEl.appendChild(liEl);
     liEl.textContent = `${product.all[i].name} had ${product.all[i].votes} votes, and was seen ${product.all[i].views} times.`;
+    votes.push(product.all[i].votes)
+    views.push(product.all[i].views)
   }
  result.removeEventListener('click', displayProductList);
+ chartRender();
 }
 
 rendur();
+
+function chartRender() {
+  let ctx = document.getElementById('myChart').getContext('2d');
+  let chart = new Chart(ctx, {
+    type: 'bar',
+
+    data: {
+      labels: images,
+      datasets: [{
+        label: 'votes',
+        backgroundColor: 'red',
+        borderColor: 'rgb(255, 99, 132)',
+        data: votes
+      },
+      {
+        label: 'views',
+        backgroundColor: 'green',
+        borderColor: 'rgb(255, 99, 132)',
+        data: views
+      }]
+    },
+
+    options: {}
+  });
+}

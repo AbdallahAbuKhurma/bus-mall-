@@ -65,7 +65,22 @@ main section img {
     margin-top: 20px;
 }
 
+#productList{
+    text-align: left;
+    margin-left: 105px;
+}
 
+#productList h3{
+    font-size: 20px;
+    margin-bottom: 20px;
+}
 
- 
+#productList ul{
+    text-decoration: none;
+    list-style:inside;
+}
+
+#productList li{
+    margin-bottom: 10px;
+}
 
