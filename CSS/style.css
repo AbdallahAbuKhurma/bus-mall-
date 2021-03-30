@@ -7,22 +7,20 @@ header h1 {
 
 header nav ul{
     text-align: center;
-
-    
 }
 
 header nav ul li{
     display: inline;
     font-size: 25px;
     padding-right: 50px;
-
 }
 
 header nav ul li a{
     text-decoration: none;
     color: black;
-
-
+    border: solid black 2px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 main h1{
@@ -52,7 +50,7 @@ main section img {
 }
 
 #result{
-    background-color: #4CAF50; /* Green */
+    background-color: #4CAF50;
     border: none;
     color: white;
     padding: 15px 32px;
@@ -83,4 +81,3 @@ main section img {
 #productList li{
     margin-bottom: 10px;
 }
-
